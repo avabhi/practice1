@@ -1,0 +1,50 @@
+import javax.swing.*;
+import java.sql.*;
+import java.awt.event.*;
+import java.awt.*;
+
+class signin implements ActionListener {
+	JFrame f;
+
+	JLabel l1,l2;
+	JTextField t1,t2;
+	JButton b1,b2;
+	signin(){
+			f=new JFrame();
+		f.setSize(500,400);
+		l1=new JLabel("UserName:");
+		l1.setBounds(60,30,70,20);
+		f.add(l1);
+		t1=new JTextField(10);
+		t1.setBounds(140,30,120,20);
+		f.add(t1);
+		l2=new JLabel("Password:");
+		l2.setBounds(60,70,70,20);
+		f.add(l2);
+		t2=new JTextField(10);
+		t2.setBounds(140,70,120,20);
+		f.add(t2);
+		b1=new JButton("SUBMIT");
+		b1.setBounds(100,100,100,20);
+		f.add(b1);
+		b2=new JButton("Forget");
+		b2.setBounds(240,100,100,20);
+		f.add(b2);
+		f.setLayout(null);
+		f.setVisible(true);
+		//f.setDefaultCloseOperation(JFrame.EXIT_ON_ClOSE);
+	}
+	public void ActionPerformed(ActionEvent e){
+		String UserName= t1.getText();
+		String Password= t2.getText();
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:8080:xe","cse","admin");
+			Statement stmt=con.createStatement();
+			stmt.executeQuery();
+
+	}
+	
+	public static void  main(String...w){
+		new signin();
+	}
+}
